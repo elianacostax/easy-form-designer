@@ -1,13 +1,13 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { Compass, Sparkles, Image as ImageIcon, User, Heart, MessageCircle, Search } from "lucide-react";
+import { Compass, Sparkles, Image as ImageIcon, User, Heart, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import AIAssistant from "@/components/ai/AIAssistant";
 
 const nav = [
-  { to: "/discover", label: "Discover", icon: Compass },
-  { to: "/galleries", label: "Galleries", icon: ImageIcon },
-  { to: "/trending", label: "Trending", icon: Sparkles },
-  { to: "/dashboard", label: "Dashboard", icon: User },
+  { to: "/discover", label: "Descubrir", icon: Compass },
+  { to: "/galleries", label: "Galerías", icon: ImageIcon },
+  { to: "/trending", label: "Tendencias", icon: Sparkles },
+  { to: "/dashboard", label: "Mi espacio", icon: User },
 ];
 
 const AppLayout = () => {
@@ -17,11 +17,11 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen flex w-full bg-background">
-      {/* Elegant sidebar */}
       <aside className="hidden lg:flex w-60 flex-col fixed inset-y-0 border-r border-border/60 px-6 py-8 z-40 bg-background/80 backdrop-blur-xl">
-        <NavLink to="/" className="font-serif text-2xl tracking-tight mb-12">
+        <NavLink to="/" className="font-serif text-2xl tracking-tight mb-2">
           MUSÉO<span className="text-terracotta">.</span>
         </NavLink>
+        <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-10">Arte joven · Colombia</p>
         <nav className="flex flex-col gap-1 flex-1">
           {nav.map(({ to, label, icon: Icon }) => (
             <NavLink
@@ -45,7 +45,7 @@ const AppLayout = () => {
             }`
           }>
             <Heart className="w-4 h-4" strokeWidth={1.5} />
-            <span className="tracking-wide">Favorites</span>
+            <span className="tracking-wide">Favoritos</span>
           </NavLink>
         </nav>
 
@@ -54,7 +54,7 @@ const AppLayout = () => {
           className="mt-6 flex items-center gap-3 px-3 py-3 rounded-md text-sm bg-ink text-ivory hover:opacity-90 transition-all"
         >
           <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-          <span>Ask the Curator</span>
+          <span>Pregunta al Curador</span>
         </button>
 
         <div className="mt-6 text-[11px] text-muted-foreground tracking-widest uppercase">
@@ -62,7 +62,6 @@ const AppLayout = () => {
         </div>
       </aside>
 
-      {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 inset-x-0 z-40 glass border-b border-border/40 px-5 py-4 flex items-center justify-between">
         <NavLink to="/" className="font-serif text-xl">MUSÉO<span className="text-terracotta">.</span></NavLink>
         <button onClick={() => setAiOpen(true)} className="p-2 rounded-full bg-ink text-ivory">
@@ -72,7 +71,6 @@ const AppLayout = () => {
 
       <main className={`flex-1 lg:ml-60 ${isLanding ? "" : "pt-20 lg:pt-0"}`}>
         <Outlet />
-        {/* Mobile bottom nav */}
         <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 glass border-t border-border/40 flex justify-around py-3">
           {nav.map(({ to, label, icon: Icon }) => (
             <NavLink key={to} to={to} className={({ isActive }) =>
