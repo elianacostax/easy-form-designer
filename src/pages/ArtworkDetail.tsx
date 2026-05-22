@@ -8,7 +8,7 @@ const ArtworkDetail = () => {
   const { id } = useParams();
   const work = artworks.find((w) => w.id === id);
   const { isFavorite, toggle } = useFavorites();
-  if (!work) return <div className="p-16 font-serif text-3xl">Work not found.</div>;
+  if (!work) return <div className="p-16 font-serif text-3xl">Obra no encontrada.</div>;
 
   const related = artworks.filter((a) => a.artistId === work.artistId && a.id !== work.id).slice(0, 3);
   const fav = isFavorite(work.id);
@@ -17,7 +17,7 @@ const ArtworkDetail = () => {
     <div className="pb-32 lg:pb-16 animate-fade-in">
       <div className="px-6 lg:px-16 pt-8">
         <Link to="/discover" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to discover
+          <ArrowLeft className="w-3.5 h-3.5" /> Volver a descubrir
         </Link>
       </div>
 
@@ -35,10 +35,10 @@ const ArtworkDetail = () => {
 
           <dl className="mt-10 space-y-4 text-sm border-t border-border/60 pt-8">
             {[
-              ["Year", work.year],
-              ["Medium", work.medium],
-              ["Dimensions", work.dimensions],
-              ["Category", work.category],
+              ["Año", work.year],
+              ["Técnica", work.medium],
+              ["Dimensiones", work.dimensions],
+              ["Categoría", work.category],
             ].map(([k, v]) => (
               <div key={k as string} className="grid grid-cols-[120px_1fr] gap-4">
                 <dt className="text-muted-foreground uppercase text-[11px] tracking-widest pt-0.5">{k}</dt>
@@ -51,11 +51,11 @@ const ArtworkDetail = () => {
 
           {work.price && (
             <div className="mt-10 p-6 rounded-md glass">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">Price on request</p>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">Precio</p>
               <p className="font-serif text-3xl mt-2">{work.price}</p>
               <div className="flex gap-3 mt-6">
                 <button className="flex-1 bg-ink text-ivory rounded-full py-3.5 text-sm tracking-wide hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2">
-                  <ShoppingBag className="w-4 h-4" strokeWidth={1.5} /> Inquire
+                  <ShoppingBag className="w-4 h-4" strokeWidth={1.5} /> Contactar al artista
                 </button>
                 <button onClick={() => toggle(work.id)} className="w-12 h-12 rounded-full border border-border hover:bg-secondary flex items-center justify-center">
                   <Heart className={`w-4 h-4 ${fav ? "fill-terracotta text-terracotta" : ""}`} strokeWidth={1.5} />
@@ -71,8 +71,8 @@ const ArtworkDetail = () => {
 
       {related.length > 0 && (
         <section className="mt-32 px-6 lg:px-16">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-3">More by {work.artistName}</p>
-          <h2 className="font-serif text-4xl mb-10">From the same hand</h2>
+          <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-3">Más obras de {work.artistName}</p>
+          <h2 className="font-serif text-4xl mb-10">De la misma mano</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
             {related.map((a) => <ArtworkCard key={a.id} artwork={a} />)}
           </div>

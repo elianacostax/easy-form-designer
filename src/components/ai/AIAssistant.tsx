@@ -4,24 +4,26 @@ import { useState, useEffect, useRef } from "react";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const suggestions = [
-  "Show me minimalist Japanese ink works",
-  "What's trending this week?",
-  "Recommend something like Rothko",
-  "Sculptures under $20,000",
+  "Muéstrame artistas de la UNAL",
+  "¿Qué es tendencia esta semana?",
+  "Obras del Pacífico bajo $1.500.000",
+  "Recomiéndame algo contemplativo",
 ];
 
 const seedResponses = (q: string) => {
   const lower = q.toLowerCase();
-  if (lower.includes("trend")) return "This week, viewers are drawn to Amara Okafor's gestural abstractions and Kenji Aoyama's new sumi works. Both are featured in the Discover feed.";
-  if (lower.includes("rothko") || lower.includes("color")) return "If Rothko moves you, explore Elena Marchetti's 'Silence in Amber' — a meditation on color field through layered oils. I've also queued Lagos Dreaming by Amara Okafor for you.";
-  if (lower.includes("sculpt")) return "Luc Vermeer's 'Threshold' ($42K) and 'Glass Horizon' ($31.5K) are exceptional translucent sculptures. Would you like me to open the Virtual Gallery: After the Light?";
-  if (lower.includes("japan") || lower.includes("ink") || lower.includes("minimal")) return "Kenji Aoyama is the artist to know. His 'Ink Garden VII' and 'Brushstroke Sutra' embody contemporary minimalism through traditional sumi technique.";
-  return "I can help you discover artworks by mood, medium, color or price. Try asking for a specific feeling — 'something contemplative under $10K' — and I'll curate for you.";
+  if (lower.includes("tendencia") || lower.includes("trend")) return "Esta semana los visitantes están explorando las obras de Mariana Restrepo (UdeA) y Valentina Caicedo (Bellas Artes Cali). Ambas están en el feed de Descubrir.";
+  if (lower.includes("unal") || lower.includes("nacional") || lower.includes("bogotá")) return "Santiago Quintero, egresado reciente de la Universidad Nacional, trabaja con tinta china sobre los cerros orientales. Te recomiendo 'Bogotá en Tinta VII' y 'Caligrafía del Viento'.";
+  if (lower.includes("pacífico") || lower.includes("pacifico") || lower.includes("cali") || lower.includes("chocó")) return "Valentina Caicedo, del Instituto de Bellas Artes de Cali, es la voz a seguir. Mira 'Geometría Ancestral' ($1.800.000 COP) y 'Tejido Heredado' ($1.450.000 COP).";
+  if (lower.includes("escult")) return "Camilo Hernández, becario del Mincultura desde Cartagena, hace esculturas en vidrio reciclado. 'Umbral Caribe' ($4.200.000 COP) es una pieza imperdible.";
+  if (lower.includes("medellín") || lower.includes("antioquia") || lower.includes("paisa")) return "Mariana Restrepo (UdeA) pinta el páramo antioqueño con pigmentos naturales. Su obra 'Silencio del Páramo' está entre las más vistas.";
+  if (lower.includes("contempl") || lower.includes("calma") || lower.includes("silencio")) return "Para algo contemplativo te recomiendo 'Sutra del Trazo' de Santiago Quintero o 'Campo No. 12' de Mariana Restrepo — ambas trabajan el silencio del gesto.";
+  return "Puedo ayudarte a descubrir obras por universidad, región, técnica, color o precio. Cuéntame qué buscas — por ejemplo 'algo del Caribe bajo $2.000.000' — y curo para ti.";
 };
 
 const AIAssistant = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "assistant", content: "Welcome. I'm your private curator. Tell me what you're searching for — a feeling, a color, an artist you love." },
+    { role: "assistant", content: "Bienvenido. Soy tu curador personal. Cuéntame qué buscas — un sentimiento, una región, un artista colombiano que te llame la atención." },
   ]);
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,8 +57,8 @@ const AIAssistant = ({ open, onClose }: { open: boolean; onClose: () => void }) 
               <Sparkles className="w-4 h-4" strokeWidth={1.5} />
             </div>
             <div>
-              <p className="font-serif text-lg leading-none">The Curator</p>
-              <p className="text-[11px] text-muted-foreground tracking-widest uppercase mt-1">AI-powered guide</p>
+              <p className="font-serif text-lg leading-none">El Curador</p>
+              <p className="text-[11px] text-muted-foreground tracking-widest uppercase mt-1">Guía con IA</p>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-secondary rounded-full">
@@ -76,7 +78,7 @@ const AIAssistant = ({ open, onClose }: { open: boolean; onClose: () => void }) 
           ))}
           {messages.length <= 1 && (
             <div className="pt-4 space-y-2">
-              <p className="text-[11px] uppercase tracking-widest text-muted-foreground">Try asking</p>
+              <p className="text-[11px] uppercase tracking-widest text-muted-foreground">Prueba preguntando</p>
               {suggestions.map((s) => (
                 <button key={s} onClick={() => send(s)} className="block w-full text-left px-4 py-3 text-sm rounded-md border border-border/60 hover:bg-secondary transition-colors">
                   {s}
@@ -91,7 +93,7 @@ const AIAssistant = ({ open, onClose }: { open: boolean; onClose: () => void }) 
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask the Curator…"
+              placeholder="Pregúntale al Curador…"
               className="flex-1 bg-transparent text-sm py-2 outline-none placeholder:text-muted-foreground"
             />
             <button type="submit" className="w-9 h-9 rounded-full bg-ink text-ivory flex items-center justify-center hover:opacity-90">

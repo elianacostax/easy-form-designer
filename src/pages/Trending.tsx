@@ -10,11 +10,11 @@ const Trending = () => {
       <header className="mb-12 flex items-end justify-between flex-wrap gap-4">
         <div>
           <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3 inline-flex items-center gap-2">
-            <TrendingUp className="w-3.5 h-3.5" /> Trending now
+            <TrendingUp className="w-3.5 h-3.5" /> Tendencias ahora
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl">What the world is watching.</h1>
+          <h1 className="font-serif text-5xl md:text-6xl">Lo que Colombia está viendo.</h1>
         </div>
-        <p className="text-sm text-muted-foreground">Updated hourly · Based on global engagement</p>
+        <p className="text-sm text-muted-foreground">Actualizado cada hora · Basado en visitas y favoritos</p>
       </header>
 
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">

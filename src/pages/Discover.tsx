@@ -4,29 +4,28 @@ import ArtworkCard from "@/components/art/ArtworkCard";
 import { Search } from "lucide-react";
 
 const Discover = () => {
-  const [filter, setFilter] = useState<string>("All");
+  const [filter, setFilter] = useState<string>("Todo");
   const [q, setQ] = useState("");
   const filtered = artworks.filter((a) =>
-    (filter === "All" || a.category === filter) &&
+    (filter === "Todo" || a.category === filter) &&
     (q === "" || a.title.toLowerCase().includes(q.toLowerCase()) || a.artistName.toLowerCase().includes(q.toLowerCase()))
   );
 
   return (
     <div className="px-6 lg:px-16 py-12 pb-32 lg:pb-12">
       <header className="mb-12 max-w-3xl">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3">Discover</p>
-        <h1 className="font-serif text-5xl md:text-6xl leading-tight">A feed shaped by your eye.</h1>
-        <p className="text-muted-foreground mt-4 max-w-xl">Browse handpicked works from emerging and established voices. Every piece is a doorway.</p>
+        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3">Descubrir</p>
+        <h1 className="font-serif text-5xl md:text-6xl leading-tight">Un feed con tu mirada.</h1>
+        <p className="text-muted-foreground mt-4 max-w-xl">Explora obras seleccionadas de estudiantes de artes de toda Colombia. Cada pieza es una puerta.</p>
       </header>
 
-      {/* Search + categories */}
       <div className="sticky top-0 lg:top-4 z-30 -mx-6 lg:mx-0 px-6 lg:px-0 py-4 bg-background/85 backdrop-blur-xl border-b border-border/40 lg:border-0 mb-8">
         <div className="flex items-center gap-3 bg-secondary rounded-full px-5 py-3 mb-5 max-w-xl">
           <Search className="w-4 h-4 text-muted-foreground" strokeWidth={1.5} />
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search works, artists…" className="bg-transparent outline-none text-sm flex-1" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar obras, artistas, universidades…" className="bg-transparent outline-none text-sm flex-1" />
         </div>
         <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1">
-          {["All", ...categories.map((c) => c.name)].map((c) => (
+          {["Todo", ...categories.map((c) => c.name)].map((c) => (
             <button
               key={c}
               onClick={() => setFilter(c)}
@@ -45,7 +44,7 @@ const Discover = () => {
       </div>
 
       {filtered.length === 0 && (
-        <p className="text-center py-24 text-muted-foreground font-serif text-2xl">No works found. Try another search.</p>
+        <p className="text-center py-24 text-muted-foreground font-serif text-2xl">No encontramos obras. Prueba con otra búsqueda.</p>
       )}
     </div>
   );

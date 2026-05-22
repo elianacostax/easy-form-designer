@@ -17,6 +17,7 @@ export type Artist = {
   id: string;
   name: string;
   origin: string;
+  school: string;
   born: number;
   avatar: string;
   cover: string;
@@ -34,7 +35,6 @@ export type Gallery = {
   description: string;
 };
 
-// Wikimedia / open art image URLs (public domain masterpieces)
 const img = (n: number) => {
   const set = [
     "https://images.unsplash.com/photo-1549289524-06cf8837ace5?w=1200&q=80",
@@ -54,39 +54,39 @@ const img = (n: number) => {
 };
 
 export const artists: Artist[] = [
-  { id: "a1", name: "Elena Marchetti", origin: "Milan, Italy", born: 1982, avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", cover: img(0), bio: "Italian visual artist exploring memory, light and architectural silence through layered oils and pigment.", works: 47, followers: "12.4K" },
-  { id: "a2", name: "Kenji Aoyama", origin: "Kyoto, Japan", born: 1975, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", cover: img(3), bio: "Contemporary minimalist working with sumi ink, paper and the gesture of absence.", works: 89, followers: "34.1K" },
-  { id: "a3", name: "Amara Okafor", origin: "Lagos, Nigeria", born: 1990, avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80", cover: img(5), bio: "Mixed-media painter weaving ancestral motifs with contemporary digital abstraction.", works: 33, followers: "8.9K" },
-  { id: "a4", name: "Luc Vermeer", origin: "Amsterdam, NL", born: 1968, avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", cover: img(7), bio: "Sculptor of light and translucent forms, exhibited at the Stedelijk and Tate Modern.", works: 56, followers: "21.7K" },
+  { id: "a1", name: "Mariana Restrepo", origin: "Medellín, Antioquia", school: "Universidad de Antioquia · Artes Plásticas", born: 2001, avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", cover: img(0), bio: "Estudiante de último semestre de Artes Plásticas. Trabaja la memoria de la montaña paisa a través del óleo y pigmentos naturales recolectados en el campo antioqueño.", works: 14, followers: "1.2K" },
+  { id: "a2", name: "Santiago Quintero", origin: "Bogotá, Cundinamarca", school: "Universidad Nacional de Colombia · Bellas Artes", born: 1999, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", cover: img(3), bio: "Investiga el silencio urbano de Bogotá con tinta china sobre papel de algodón. Egresado reciente del taller de dibujo experimental de la UNAL.", works: 22, followers: "2.4K" },
+  { id: "a3", name: "Valentina Caicedo", origin: "Cali, Valle del Cauca", school: "Instituto Departamental de Bellas Artes", born: 2002, avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80", cover: img(5), bio: "Artista afrocolombiana del Pacífico. Mezcla técnicas ancestrales del Chocó con abstracción contemporánea y pan de oro.", works: 11, followers: "890" },
+  { id: "a4", name: "Camilo Hernández", origin: "Cartagena, Bolívar", school: "Universidad de Bellas Artes y Ciencias de Bolívar", born: 2000, avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", cover: img(7), bio: "Esculturas en resina y vidrio reciclado que capturan la luz del Caribe. Beca de creación joven del Ministerio de Cultura 2025.", works: 9, followers: "1.8K" },
 ];
 
 export const artworks: Artwork[] = [
-  { id: "w1", title: "Silence in Amber", artistId: "a1", artistName: "Elena Marchetti", year: 2023, medium: "Oil on linen", category: "Painting", dimensions: "120 × 90 cm", price: "$24,000", image: img(0), description: "A meditation on the spaces between memory and architecture — warm pigment layered against negative space.", trending: true },
-  { id: "w2", title: "Ink Garden VII", artistId: "a2", artistName: "Kenji Aoyama", year: 2024, medium: "Sumi ink on rice paper", category: "Drawing", dimensions: "80 × 60 cm", price: "$8,500", image: img(1), description: "Part of an ongoing series exploring the gesture of restraint through traditional sumi technique." },
-  { id: "w3", title: "Ancestral Geometry", artistId: "a3", artistName: "Amara Okafor", year: 2024, medium: "Mixed media on canvas", category: "Painting", dimensions: "150 × 120 cm", price: "$18,200", image: img(2), description: "Layered textile patterns translated into pigment, gold leaf and gesture.", trending: true },
-  { id: "w4", title: "Threshold", artistId: "a4", artistName: "Luc Vermeer", year: 2022, medium: "Cast resin & light", category: "Sculpture", dimensions: "200 × 80 × 60 cm", price: "$42,000", image: img(3), description: "Translucent sculptural form refracting ambient gallery light." },
-  { id: "w5", title: "Field Study No. 12", artistId: "a1", artistName: "Elena Marchetti", year: 2023, medium: "Oil & wax on panel", category: "Painting", dimensions: "60 × 60 cm", price: "$6,400", image: img(4), description: "Small-format meditation on landscape memory." },
-  { id: "w6", title: "Brushstroke Sutra", artistId: "a2", artistName: "Kenji Aoyama", year: 2023, medium: "Ink on silk", category: "Drawing", dimensions: "100 × 70 cm", price: "$11,000", image: img(5), trending: true, description: "Single-gesture composition exploring the impermanence of mark-making." },
-  { id: "w7", title: "Lagos Dreaming", artistId: "a3", artistName: "Amara Okafor", year: 2024, medium: "Acrylic & gold leaf", category: "Painting", dimensions: "180 × 140 cm", price: "$22,800", image: img(6), description: "Urban memory translated into gestural abstraction." },
-  { id: "w8", title: "Glass Horizon", artistId: "a4", artistName: "Luc Vermeer", year: 2024, medium: "Blown glass", category: "Sculpture", dimensions: "60 × 200 × 40 cm", price: "$31,500", image: img(7), description: "Horizontal sculptural meditation on transparency." },
-  { id: "w9", title: "Quiet Architectures", artistId: "a1", artistName: "Elena Marchetti", year: 2024, medium: "Oil on linen", category: "Painting", dimensions: "140 × 100 cm", price: "$28,600", image: img(8), trending: true, description: "Architectural fragments suspended in atmospheric color." },
-  { id: "w10", title: "Wind Calligraphy", artistId: "a2", artistName: "Kenji Aoyama", year: 2024, medium: "Ink on paper", category: "Drawing", dimensions: "90 × 60 cm", price: "$9,800", image: img(9), description: "Calligraphic mark responding to the rhythm of wind through bamboo." },
-  { id: "w11", title: "Heritage Weave", artistId: "a3", artistName: "Amara Okafor", year: 2023, medium: "Mixed media", category: "Textile", dimensions: "120 × 90 cm", price: "$14,500", image: img(10), description: "Woven textile and pigment exploring inherited pattern." },
-  { id: "w12", title: "Light Vessel", artistId: "a4", artistName: "Luc Vermeer", year: 2024, medium: "Glass & steel", category: "Sculpture", dimensions: "180 × 60 × 60 cm", price: "$38,000", image: img(11), description: "Vertical sculptural form catching daylight throughout the gallery hours." },
+  { id: "w1", title: "Silencio del Páramo", artistId: "a1", artistName: "Mariana Restrepo", year: 2024, medium: "Óleo sobre lino", category: "Pintura", dimensions: "120 × 90 cm", price: "$2.400.000 COP", image: img(0), description: "Una meditación sobre el páramo antioqueño al amanecer — pigmentos cálidos en capas sobre el silencio del frailejón.", trending: true },
+  { id: "w2", title: "Bogotá en Tinta VII", artistId: "a2", artistName: "Santiago Quintero", year: 2025, medium: "Tinta china sobre papel de algodón", category: "Dibujo", dimensions: "80 × 60 cm", price: "$850.000 COP", image: img(1), description: "Parte de una serie que documenta los cerros orientales en gestos mínimos de tinta." },
+  { id: "w3", title: "Geometría Ancestral", artistId: "a3", artistName: "Valentina Caicedo", year: 2025, medium: "Técnica mixta sobre lienzo", category: "Pintura", dimensions: "150 × 120 cm", price: "$1.800.000 COP", image: img(2), description: "Patrones del Pacífico colombiano traducidos a pigmento, pan de oro y gesto contemporáneo.", trending: true },
+  { id: "w4", title: "Umbral Caribe", artistId: "a4", artistName: "Camilo Hernández", year: 2024, medium: "Resina y vidrio reciclado", category: "Escultura", dimensions: "200 × 80 × 60 cm", price: "$4.200.000 COP", image: img(3), description: "Forma escultórica translúcida que refracta la luz del Caribe colombiano." },
+  { id: "w5", title: "Campo No. 12", artistId: "a1", artistName: "Mariana Restrepo", year: 2024, medium: "Óleo y cera sobre madera", category: "Pintura", dimensions: "60 × 60 cm", price: "$640.000 COP", image: img(4), description: "Pequeño formato sobre la memoria del paisaje antioqueño." },
+  { id: "w6", title: "Sutra del Trazo", artistId: "a2", artistName: "Santiago Quintero", year: 2024, medium: "Tinta sobre seda", category: "Dibujo", dimensions: "100 × 70 cm", price: "$1.100.000 COP", image: img(5), trending: true, description: "Composición de un solo gesto sobre la impermanencia del trazo." },
+  { id: "w7", title: "Sueño de Buenaventura", artistId: "a3", artistName: "Valentina Caicedo", year: 2025, medium: "Acrílico y pan de oro", category: "Pintura", dimensions: "180 × 140 cm", price: "$2.200.000 COP", image: img(6), description: "Memoria urbana del puerto traducida a abstracción gestual." },
+  { id: "w8", title: "Horizonte de Vidrio", artistId: "a4", artistName: "Camilo Hernández", year: 2025, medium: "Vidrio soplado", category: "Escultura", dimensions: "60 × 200 × 40 cm", price: "$3.100.000 COP", image: img(7), description: "Meditación escultórica horizontal sobre la transparencia del mar." },
+  { id: "w9", title: "Arquitecturas Silenciosas", artistId: "a1", artistName: "Mariana Restrepo", year: 2025, medium: "Óleo sobre lino", category: "Pintura", dimensions: "140 × 100 cm", price: "$2.800.000 COP", image: img(8), trending: true, description: "Fragmentos arquitectónicos de pueblos paisas suspendidos en color atmosférico." },
+  { id: "w10", title: "Caligrafía del Viento", artistId: "a2", artistName: "Santiago Quintero", year: 2025, medium: "Tinta sobre papel", category: "Dibujo", dimensions: "90 × 60 cm", price: "$980.000 COP", image: img(9), description: "Trazo caligráfico que responde al ritmo del viento andino." },
+  { id: "w11", title: "Tejido Heredado", artistId: "a3", artistName: "Valentina Caicedo", year: 2024, medium: "Técnica mixta", category: "Textil", dimensions: "120 × 90 cm", price: "$1.450.000 COP", image: img(10), description: "Tejido y pigmento que exploran el patrón heredado del Pacífico." },
+  { id: "w12", title: "Vasija de Luz", artistId: "a4", artistName: "Camilo Hernández", year: 2025, medium: "Vidrio y acero", category: "Escultura", dimensions: "180 × 60 × 60 cm", price: "$3.800.000 COP", image: img(11), description: "Forma escultórica vertical que captura la luz del trópico a lo largo del día." },
 ];
 
 export const galleries: Gallery[] = [
-  { id: "g1", title: "Quiet Materials", curator: "Curated by Sofia Lin", cover: img(0), works: 24, description: "A survey of contemporary works exploring restraint, texture and silence." },
-  { id: "g2", title: "After the Light", curator: "Curated by Marcus Reed", cover: img(7), works: 18, description: "Sculpture and photography in conversation with the architecture of daylight." },
-  { id: "g3", title: "New Cartographies", curator: "Curated by Amina Diallo", cover: img(2), works: 31, description: "Emerging voices mapping identity, place and migration through paint." },
-  { id: "g4", title: "The Gesture", curator: "Curated by Hideo Tanaka", cover: img(5), works: 22, description: "An intimate look at mark-making across cultures and generations." },
+  { id: "g1", title: "Nuevas Voces del Pacífico", curator: "Curaduría: Sofía Lin", cover: img(0), works: 24, description: "Una muestra de estudiantes del Valle, Cauca y Chocó explorando memoria, raíz y abstracción." },
+  { id: "g2", title: "Después de la Luz", curator: "Curaduría: Marcos Reyes", cover: img(7), works: 18, description: "Escultura y fotografía joven en diálogo con la luz del Caribe colombiano." },
+  { id: "g3", title: "Cartografías Andinas", curator: "Curaduría: Amina Diallo", cover: img(2), works: 31, description: "Voces emergentes de la cordillera mapeando identidad, territorio y migración interna." },
+  { id: "g4", title: "El Gesto Universitario", curator: "Curaduría: Hideo Tanaka", cover: img(5), works: 22, description: "Una mirada íntima al dibujo y la pintura en las facultades de artes del país." },
 ];
 
 export const categories = [
-  { name: "Painting", count: 248 },
-  { name: "Sculpture", count: 96 },
-  { name: "Drawing", count: 142 },
-  { name: "Photography", count: 187 },
+  { name: "Pintura", count: 248 },
+  { name: "Escultura", count: 96 },
+  { name: "Dibujo", count: 142 },
+  { name: "Fotografía", count: 187 },
   { name: "Digital", count: 73 },
-  { name: "Textile", count: 41 },
+  { name: "Textil", count: 41 },
 ];

@@ -10,15 +10,15 @@ const Favorites = () => {
   return (
     <div className="px-6 lg:px-16 py-12 pb-32 lg:pb-16">
       <header className="mb-12">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3">Your collection</p>
-        <h1 className="font-serif text-5xl md:text-6xl">Saved for later.</h1>
+        <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3">Tu colección</p>
+        <h1 className="font-serif text-5xl md:text-6xl">Guardadas para después.</h1>
       </header>
       {saved.length === 0 ? (
         <div className="text-center py-32 max-w-md mx-auto">
           <Heart className="w-10 h-10 mx-auto text-muted-foreground mb-6" strokeWidth={1} />
-          <p className="font-serif text-3xl mb-4">Nothing saved yet.</p>
-          <p className="text-muted-foreground mb-8">Tap the heart on any work to keep it here.</p>
-          <Link to="/discover" className="inline-flex items-center bg-ink text-ivory px-6 py-3 rounded-full text-sm">Start discovering</Link>
+          <p className="font-serif text-3xl mb-4">Aún no has guardado obras.</p>
+          <p className="text-muted-foreground mb-8">Toca el corazón en cualquier obra para guardarla aquí.</p>
+          <Link to="/discover" className="inline-flex items-center bg-ink text-ivory px-6 py-3 rounded-full text-sm">Empezar a descubrir</Link>
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
